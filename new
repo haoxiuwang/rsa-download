@@ -1,12 +1,13 @@
 #cloud-config
 users:  
-  - name: root
+  - name: core
     ssh_authorized_keys:
-      - ssh-rsa AAAAB3NzaC1yc2EAAAABJQAAAQEAsH2LRBEm68sYjraMU0p1dIxu75TbgxgEMIBIwjN92JfINf1PNoKYWoSqQ9LxHlWVact9zLzED8nw4YPGOf4vx9GaceFP5Hkv5Ln1Z5gXrsa0B57B4HTywCBMB22iHi3RE6rtPx0y/doCQusQzQ7SZU7UH5nWhmtES441
-8LhjnHifad0CM6YSc4ErmTl/j/Glh/ZK6XIiU8CUpR95Ka6rPuhPD3StnIWkSgRyfK/DrUsj8/JfgmnZXltKY2eWYfB/pkRBxdpbewqBZYDKa3g2rayY9dfAhtxjN6XWgwVwz34ahjYYWJBtQQdICugaBJwwA+UbbOXvER95A2wT4zA2Tw==
-
+      - ssh-rsa 
+     AAAAB3NzaC1yc2EAAAABJQAAAQEAwW5mLOWyAm6JoK/YMo7wFfs8fLkOdVk8D7gd/QfBx4Fzb5WJVykBpyaQ9z+QUSUADG/sSoSdb+FQyjQGG3SALN4LTflwUNfCvd0PO2c242do2VKqNd7EF63h0gDYnsCAbcq5UYOBwKPvY7F6Xa+6NLt9/lBxAei4NA2tiTUcg7IxgYg2+Xjvu6FllsOYmB87OZDXXcl7+jIpgv84TjGakkYc00k/dMxqS8svPZxGmf5FHEesVcfW5KDIOYuZ4fdmzRmaJ/jxzt8YABad4KqpLfA1OI4XvMo6G/hNIo9B1hrwfd0alW40FpcgjcQEa0OyWV2rVxVBnI8DYU9/v0u7Tw==
     groups:
-      - wheel
+      - sudo
+      - docker
+    shell: /bin/sh
 write_files:  
   - path: /etc/ssh/sshd_config
     permissions: 0600
@@ -19,4 +20,4 @@ write_files:
       UseDNS no
       PermitRootLogin yes //允许root登录，可以留作备用登录方式
       ChallengeResponseAuthentication no 
-      PasswordAuthentication yes //允许使用口令登录，如果密钥登录验证通过之后，可以
+      PasswordAuthentication yes 
