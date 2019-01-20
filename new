@@ -1,13 +1,12 @@
 #cloud-config
 users:  
-  - name: user
+  - name: root
     ssh_authorized_keys:
-      - ssh-rsa 
-     <公钥内容>
+      - ssh-rsa AAAAB3NzaC1yc2EAAAABJQAAAQEAsH2LRBEm68sYjraMU0p1dIxu75TbgxgEMIBIwjN92JfINf1PNoKYWoSqQ9LxHlWVact9zLzED8nw4YPGOf4vx9GaceFP5Hkv5Ln1Z5gXrsa0B57B4HTywCBMB22iHi3RE6rtPx0y/doCQusQzQ7SZU7UH5nWhmtES441
+8LhjnHifad0CM6YSc4ErmTl/j/Glh/ZK6XIiU8CUpR95Ka6rPuhPD3StnIWkSgRyfK/DrUsj8/JfgmnZXltKY2eWYfB/pkRBxdpbewqBZYDKa3g2rayY9dfAhtxjN6XWgwVwz34ahjYYWJBtQQdICugaBJwwA+UbbOXvER95A2wT4zA2Tw==
+
     groups:
-      - sudo
-      - docker
-    shell: /bin/sh
+      - wheel
 write_files:  
   - path: /etc/ssh/sshd_config
     permissions: 0600
