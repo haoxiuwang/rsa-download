@@ -1,0 +1,23 @@
+#cloud-config
+users:  
+  - name: user
+    ssh_authorized_keys:
+      - ssh-rsa 
+     <公钥内容>
+    groups:
+      - sudo
+      - docker
+    shell: /bin/sh
+write_files:  
+  - path: /etc/ssh/sshd_config
+    permissions: 0600
+    owner: root
+    content: |
+      # Use most defaults for sshd configuration.
+      UsePrivilegeSeparation sandbox
+      Subsystem sftp internal-sftp
+      ClientAliveInterval 180
+      UseDNS no
+      PermitRootLogin yes //允许root登录，可以留作备用登录方式
+      ChallengeResponseAuthentication no 
+      PasswordAuthentication yes //允许使用口令登录，如果密钥登录验证通过之后，可以
